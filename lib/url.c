@@ -2651,6 +2651,18 @@ CURLcode Curl_parse_login_details(const char *login, const size_t len,
       Curl_safefree(*passwdp);
       *passwdp = pbuf;
     }
+    else {
+      pbuf = strdup("");
+      if(!pbuf) {
+        result = CURLE_OUT_OF_MEMORY;
+        if(obuf) {
+          free(obuf);
+        }
+        goto finally;
+      }
+      Curl_safefree(*passwdp);
+      *passwdp = pbuf;
+    }
 
     /* Store the options portion if necessary */
     if(obuf) {
@@ -2661,6 +2673,7 @@ CURLcode Curl_parse_login_details(const char *login, const size_t len,
     }
   }
 
+finally:
   return result;
 }
 
