@@ -376,6 +376,9 @@ static CURLcode http_output_basic(struct Curl_easy *data, bool proxy)
     pwd = data->state.aptr.passwd;
   }
 
+  if((!user || 0 == strlen(user)) && (!pwd || 0 == strlen(pwd))) {
+    return CURLE_OK;
+  }
   out = aprintf("%s:%s", user ? user : "", pwd ? pwd : "");
   if(!out)
     return CURLE_OUT_OF_MEMORY;
