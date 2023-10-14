@@ -74,7 +74,7 @@ noinst_PROGRAMS = chkhostname libauthretry libntlmconnect libprereq      \
  lib2301 lib2302 lib2304 lib2305 lib2306 \
  lib2402 lib2404 \
  lib2502 \
- lib3010 lib3025 lib3026 lib3027 \
+ lib3010 lib3025 lib3026 lib3027 lib3032 \
  lib3100 lib3101 lib3102 lib3103
 
 chkhostname_SOURCES = chkhostname.c ../../lib/curl_gethostname.c

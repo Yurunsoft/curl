@@ -2651,7 +2651,7 @@ CURLcode Curl_parse_login_details(const char *login, const size_t len,
       Curl_safefree(*passwdp);
       *passwdp = pbuf;
     }
-    else {
+    else if(passwdp) {
       pbuf = strdup("");
       if(!pbuf) {
         result = CURLE_OUT_OF_MEMORY;
